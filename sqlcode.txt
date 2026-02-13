@@ -1,0 +1,15 @@
+CREATE DATABASE onlineStore;
+CREATE USER storeUser@'localhost' IDENTIFIED BY 'storePass';
+GRANT ALL ON onlineStore.* TO storeUser@'localhost';
+
+USE onlineStore;
+
+CREATE TABLE product(
+    id_products INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20),
+    price DOUBLE,
+    saldo INT
+);
+
+INSERT INTO product(name,price,saldo) VALUES('TV 55', 695.99, 120); 
+INSERT INTO product(name,price,saldo) VALUES('Vasara', 59.99, 140); 
