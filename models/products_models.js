@@ -11,21 +11,21 @@ const products={
 
     add(newP, callback){
         return db.query("INSERT INTO product (name,price,saldo) VALUES(?,?,?)",
-        [
-            newP.name,
-            newP.price,
-            newP.saldo
-        ], callback);
+            [
+                newP.name,
+                newP.price,
+                newP.saldo
+            ], callback);
     },
 
     update(idP, newP, callback){
         return db.query("UPDATE product SET name=?, price=?, saldo=? WHERE id_products=?",
-        [
-            newP.name,
-            newP.price,
-            newP.saldo,
-            idP
-        ], callback);
+            [
+                newP.name,
+                newP.price,
+                newP.saldo,
+                idP
+            ], callback);
     },
 
     delete(idP, callback){
