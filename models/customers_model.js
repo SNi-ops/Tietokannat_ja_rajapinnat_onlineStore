@@ -1,6 +1,6 @@
 const db=require('../database');
 const bcrypt=require('bcryptjs');
-const { update } = require('./products_models');
+//const { update } = require('./products_models');
 const saltrounds=12;
 
 const customers={
@@ -65,6 +65,10 @@ const customers={
 
     deleteCustomers(uN, callback){
         return db.query("DELETE FROM customers WHERE username=?",[uN],callback);
+    },
+
+    checkLogin(uN, callback){
+        return db.query("SELECT password, role FROM customers WHERE username=?", [uN], callback);
     }
 
 }
