@@ -38,4 +38,26 @@ router.post('/',function(request, response){
     });
 });
 
+router.put('/:id', function(request, response){
+    products.update(request.params.id, request.body, function(error, result){
+        if(error){
+            response.send(error);
+        }
+        else{
+            response.json(result);
+        }
+    });
+});
+
+router.delete('/:id', function(request, response){
+    products.delete(request.params.id, function(error, result){
+        if(error){
+            response.send(error);
+        }
+        else{
+            response.json(result);
+        }
+    });
+});
+
 module.exports=router;
