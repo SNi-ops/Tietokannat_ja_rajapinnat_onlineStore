@@ -5,7 +5,6 @@ const productsRouter=require('./routes/products');
 const customersRouter=require('./routes/customers');
 const loginRouter=require('./routes/login');
 const dotenv=require('dotenv');
-
 const jwt=require('jsonwebtoken');
 
 
@@ -18,11 +17,12 @@ app.get('/',function(request, response){
 });
 
 //Endpointin kautta päästään käsiksi tiedostoihin
-app.use('/products', productsRouter);
+app.use('/login', loginRouter);
 app.use(authenticateToken);
 //suojatutu reiti vaativat tokenin
+app.use('/products', productsRouter);
 app.use('/customers', customersRouter);
-app.use('/login', loginRouter);
+
 
 //Kuuntelee määritetyn portin (3000) liikennettä ja tulostaa console logilla vastauksen
 app.listen(PORT, function(){
@@ -43,8 +43,8 @@ function authenticateToken(request, response, next) {
       return response.sendStatus(401);
     }
 
-    jwt.verify(token, process.env.MY_TOKEN, function(err, user) {
-      if (err) {
+    jwt.verify(token, process.env.MY_TOKEN, function(error, user) {
+      if (error) {
         return response.sendStatus(403);
       }
       request.user = user;

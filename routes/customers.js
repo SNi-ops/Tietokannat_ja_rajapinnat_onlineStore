@@ -14,7 +14,7 @@ router.get('/', function(request, response){
 });
 
 router.get('/:u', function(request, response){
-    //console.log(request.user);
+    console.log(request.user);
     if(request.user.username != request.params.u){
         return response.status(403).json("Sinulla ei ole oikeutta tahan resurssiin");
     }

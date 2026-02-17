@@ -1,3 +1,1 @@
-console.log(atob
-    ()
-)
+console.log(atob(""))
